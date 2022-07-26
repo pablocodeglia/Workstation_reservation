@@ -1,0 +1,22 @@
+<div class="modal fade" id="delete-item-modal">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you want to cancel this booking?</p>
+            </div>
+            <div class="justify-content-between mb-2 mr-2 text-right">
+                <form method="post" id="item-delete-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger" id="confirm-delete-item-button">Delete</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function delete_user(selected_user) {
+        document.getElementById("item-delete-form").action = selected_user.href
+    }
+</script>

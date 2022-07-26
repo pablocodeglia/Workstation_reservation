@@ -1,0 +1,42 @@
+{% extends 'reserve/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+
+
+{% block title %}Please Login{% endblock %}
+
+{% block content %}
+<div class="box-container">
+        <h5 class="titles">Login:</h5>
+        <form method="post" action="{% url 'accounts:login' %}" class="site-form" style="width:350px;display:flex;flex-direction:column;justify-items: center;align-items: center;">
+            {% csrf_token %}
+            <p>
+                Company ID #:<br>
+                {{form.username}}
+            </p>
+            <p>
+                Password:<br>
+                {{form.password}}
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert" style="">
+                    <!-- <small>{{ form.non_field_errors}}</small> -->
+                    <small>Incorrect ursername or password.</small>
+                </div>
+                {% endif %}
+
+            </p>
+            {% if request.GET.next %}
+            <input type="hidden"  name="next" value"{{request.GET.next}}">
+            {% endif %}
+            <input type="submit" class="btn btn-outline-dark" value="Login">
+        </form>
+        <br>
+        <small>
+            New user? <a href="{% url 'accounts:signup' %}"> Register Here </a>
+        </small>
+    </div>
+</div>
+{% endblock %}

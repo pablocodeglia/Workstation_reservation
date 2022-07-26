@@ -1,0 +1,24 @@
+{% if coworkers %}
+
+<div style="width:100%;">
+    {% for coworker in coworkers %}
+    <div class="card" style="width: 24rem;">
+        <img src="{{coworker.workstation_id.photo.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <!-- <h5 class="card-title">Card title</h5> -->
+          <p class="card-text">{{coworker.employee.first_name | title}} {{coworker.employee.last_name | title}} is on workstation
+            #{{coworker.workstation_id}}.</p>
+        </div>
+      </div>
+
+    {% endfor %}
+</div>
+
+{% else %}
+<div>
+    <br>
+    <span style="color:rgba(128, 128, 128, 0.671)">
+        <p>No coworkers found.</p>
+    </span>
+</div>
+{% endif %}

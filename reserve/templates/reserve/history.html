@@ -1,0 +1,28 @@
+{% extends 'reserve/base.html' %}
+
+{% block content %}
+
+<div class="box-container">
+    <h5 class="titles">These are your past bookings</h5>
+    <div id="timeTable" style="">
+        <table class="table">
+            <thead>
+                <th>Date</th>
+                <th>Workstation ID</th>
+            </thead>
+            <tbody>
+                {% for entry in history %}
+                <tr>
+                    <td>{{entry.reservation_date}}</td>
+                    <td>{{entry.workstation_id}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if not history %}
+        <h6> You have no past bookings! </h6>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

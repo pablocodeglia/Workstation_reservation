@@ -1,0 +1,156 @@
+/* General Styling */
+:root {
+  --bg-color-01: rgb(87, 111, 114);
+  --bg-color-02: rgb(125, 157, 156);
+  --bg-color-05: rgb(161, 182, 181);
+  --bg-color-03: rgb(228, 220, 207);
+  --bg-color-04: rgb(240, 235, 227);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+.titles {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+body {
+  background-color: var(--bg-color-03);
+  overflow-x: hidden;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  background-color: var(--bg-color-01);
+  color: white;
+}
+ul {
+  list-style-type: none !important;
+}
+.card {
+  flex-direction: row;
+}
+.card img {
+  width: 100px;
+}
+
+.dropdown-menu {
+  padding: 0;
+}
+.dropdown-menu > * {
+  background-color: var(--bg-color-02);
+  color: white;
+}
+.dropdown-item:hover {
+  background-color: var(--bg-color-01);
+  color: white;
+}
+
+#coworker-input {
+  border-right: none !important;
+  background-color: white;
+  border-color: lightgray;
+}
+#user-input {
+  border-left: none !important;
+  border-color: lightgray;
+  box-shadow: 0 0 0;
+  padding-left: 0px;
+}
+
+.card-img-top {
+  /* height: 300px; */
+  object-fit: contain;
+  padding: 0px;
+}
+
+/* Containers */
+
+.main-container {
+  background-color: var(--bg-color-03);
+
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  border: 0px;
+  border-color: rgb(153, 0, 255);
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#nav-div {
+  background-color: var(--bg-color-01);
+}
+
+.box-container {
+  background-color: var(--bg-color-04);
+  padding: 20px;
+  margin: 0px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 0px;
+  border-color: red;
+  border-style: solid;
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 50px rgba(139, 136, 130, 0.425);
+  overflow-x: hidden;
+}
+
+.my-card-container {
+  border: 0px;
+  border-color: rgb(18, 109, 15);
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 250px;
+  height: 80px;
+  margin: 5px;
+  background-color: rgb(250, 133, 23);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Find coworkers icon styling and animation */
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  to {
+    opacity: 0.5;
+    transform: rotate(360deg);
+  }
+}
+
+.blink {
+  text-decoration: blink;
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}

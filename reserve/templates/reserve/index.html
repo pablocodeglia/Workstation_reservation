@@ -1,0 +1,22 @@
+
+{% extends 'reserve/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="box-container">
+
+    <span class="titles"><h5 class="titles">Welcome back, {{user.first_name|capfirst }}</h5></span>
+    
+        <a href="{% url 'reserve:reservation' %}" class="btn btn btn-outline-dark btn-lrg" style="width:80%;margin:10px 50px; padding: 20px 00px">New Booking</a>
+    
+        <a href="{% url 'reserve:my_reservations' %}"  class="btn btn btn-outline-dark btn-lrg" style="width:80%;margin:10px 50px; padding: 20px 00px">Upcoming Bookings</a>
+
+        <a href="{% url 'reserve:history' %}" class="btn btn btn-outline-dark btn-lrg" style="width:80%;margin:10px 50px; padding: 20px 00px">Past Bookings</a>
+
+        <a href="{% url 'reserve:find_coworkers' %}" class="btn btn btn-outline-dark btn-lrg" style="width:80%;margin:10px 50px; padding: 20px 00px">Find Coworkers</a>
+
+</div>
+
+
+{% endblock content %}

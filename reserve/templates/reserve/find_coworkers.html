@@ -1,0 +1,43 @@
+{% extends 'reserve/base.html' %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static '/reserve/js/find_coworkers.js' %}"></script>
+    <!-- FontAwesome CDN and JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f0d7d84227.js" crossorigin="anonymous"></script>    
+{% endblock head %}
+{% block content %}
+ 
+<div class="box-container">
+
+  <div>
+    <div class="titles">
+      <h5 class="titles">Find where coworkers are seated today!</h5>
+    </div>
+
+    
+    {# icon and search-box #}
+      <form action="" >
+        <div class="input-group mb-3">
+          <div class="input-group-prepend ">
+            <span class="input-group-text" id="coworker-input" style="background-color:white;"><i style="padding: 00px;" id="search-icon" class="fas fa-search"></i></span>
+          </div>
+          <input id="user-input" type="text" class="form-control" placeholder="Type your coworker's name..." aria-label="Username" aria-describedby="basic-addon1">
+        <!-- <span>
+          <input id="user-input" class="form-control" type="text" placeholder="Start typing the name...">  
+          <i style="padding: 10px;" id="search-icon" class="fas fa-search"></i>
+        </span> -->
+      </form>
+    
+      
+    </div>
+    
+    {# artist-list section #}
+    <div id="replaceable-content" style="text-align: center;">
+      {% include 'reserve/find_coworkers_results.html' %}
+    </div>
+    
+
+</div>
+  {% endblock %}

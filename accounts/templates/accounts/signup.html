@@ -1,0 +1,52 @@
+
+
+{% extends 'reserve/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+
+
+{% block title %}Please Login{% endblock %}
+
+
+{% block content %}
+
+<div class="box-container" style="width:350px;">
+    <div class="titles">
+        <h5>Register:</h5>
+    </div>
+    
+        <form method="post" style="width:100%;display:flex;flex-direction:column;justify-items:center;align-items: center;">
+            {% csrf_token %}
+            <p>
+                Employee ID:<br> 
+                {{form.username}}
+                
+            </p>
+            <p>
+                First Name:<br>  {{form.first_name}}
+            </p>
+            <p>
+                Last Name:<br>  {{form.last_name}}
+            </p>
+            <p>
+                Email:<br>  {{form.email}} 
+            </p>
+            <p>
+                Password:<br>  {{form.password1}} 
+            </p>
+            <p>
+                Confirm password:<br>  {{form.password2}} 
+            </p>
+            <span style="color:red;list-style-type: none;text-align:center;">
+                {{ form.errors.password2 }}
+                {{ form.errors.email }}
+                {{ form.errors.name }}
+            </span>
+            <input type="submit" class="btn btn-outline-dark" value="Submit">
+        </form>
+</div>
+
+{% endblock %}

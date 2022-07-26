@@ -1,0 +1,42 @@
+{% extends 'reserve/base.html' %}
+
+{% block content %}
+
+<div class="box-container">
+    <h5 class="titles">These are your upcoming bookings!</h5>
+    <div id="timeTable" style="">
+        <table class="table" style="">
+            <thead>
+                <th>Date</th>
+                <th>Workstation ID</th>
+                <th></th>
+            </thead>
+            <tbody style="">
+                
+                {% for entry in future_reservations %}
+                <tr>
+                    <td>{{entry.reservation_date}}</td>
+                    <td>{{entry.workstation_id}}</td>
+                    <td>
+                        <a
+                        href="{% url 'reserve:delete_reservation' entry.id %}"
+                        class="btn btn-outline-danger"
+                        data-toggle="modal"
+                        data-target="#delete-item-modal"
+                        onclick="delete_user(this)">
+                        Cancel booking
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if not future_reservations %}
+    <h6> You have no upcoming bookings! </h6>
+    {% endif %}
+    </div>
+</div>
+
+{% include "reserve/modals/delete_confirm_modal.html" %}
+
+{% endblock content %}

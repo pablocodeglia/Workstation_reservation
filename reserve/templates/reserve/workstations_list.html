@@ -1,0 +1,94 @@
+{% extends 'reserve/base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- Load the Paper.js library -->
+    <script type="text/paperscript" src={% static '/reserve/js/floorplan.js' %} canvas="canvas"></script>
+    <script type="text/javascript" src="{% static '/reserve/js/paper.js' %}"></script>
+    <link rel="stylesheet" href={% static '/reserve/css/floorplan.css' %}>
+{% endblock head %}
+
+{% block title %}Pick Date{% endblock %}
+
+{% block content %}
+<!-- Get JSON workstation data from django context, pass it to JS  -->
+{{ws_json | json_script:"ws_json"}}
+<script id="ws_json" type="application/json"></script>
+<script src="{% static '/reserve/js/ws-data.js' %}"></script>
+
+<div class="box-container">
+    
+    
+    <h5 class="titles">Booking date:</h5>
+   
+    <div >
+        <form method='post' style="width:100%;display:flex;flex-direction:column;justify-items:center;align-items: center;">
+            {% csrf_token %}
+            <p>{{form.date}}</p>
+            <input type="submit" class="btn btn-outline-dark" name="check_availability" value="Submit" >
+            <div style="color:red;text-align:center">
+             <p>{{form.errors.date}}</p>
+            </div>
+        </form>
+    </div>
+    <div>
+        <p>    
+            {% if date == None %}
+            <span></span>
+            {% else %}
+            <span class="titles">
+                <h5 class="titles">Available workstations on {{date|date:"d/m/Y"}}:</h5>
+            </span>
+        </p>
+    </div>
+        {% include "reserve/modals/reservation_confirm_modal.html" %}
+        {% include "reserve/floorplan.html" %}
+        {% endif %}
+
+    <div class="my-card-container">
+        
+        {% for ws in workstations %}
+        <!--  -->
+        <div class="modal fade" id="{{ws.code}}" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">DETAILS ABOUT THE WORKSTATION {{ws.code}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                    <div class="modal-body">
+                        <img class="card-img-top" src="{{ws.photo.url}}" alt="Image" style="">
+                        <small style="align-self:right">This is the selected workstation</small>
+                        <p>
+                            <h5>Workstation located in the {{ws.sector}} area.</h5>
+                            <h5>Monitors: {{ws.monitors}}</h5>
+                            <h5>Seats: {{ws.seats}}</h5>
+                        </p>
+                    </div>
+                    <div class="justify-content-between mb-2 mr-2 text-right">
+                            <button class="btn btn-outline-primary" onclick="confirmation_data(this)" value="{{ws.code}}"> Book </button>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+<script src="{% static '/reserve/main.js' %}"></script>
+<script>
+    function confirmation_data(code) {
+        $("#"+code.value).modal("hide");
+        $("#confirm_booking_modal").modal("show");
+        document.getElementById("booking_ws").value = code.value;
+    }
+</script>
+{% endblock content %}
+
