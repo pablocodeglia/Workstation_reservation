@@ -33,6 +33,8 @@ Beyond these requirements, the design, look, and feel of the website are up to y
 
 #### **Project description: BookStation**
 
+[DEMO VIDEO](https://youtu.be/GIein3LbNk0)
+
 My final project for CS50P is a webapp for workstation booking, for employees of a fictional company.  
 The user is first required to sign up exclusively with their corporate email before being able to make reservations.
 
@@ -42,6 +44,8 @@ The main feature is the booking page, where you can select a date (no past dates
 If clicked or touched on, a modal window opens with a full description of the workstation and a picture of it. The user can then confirm their booking, and is redirected to the future bookings page.
 
 There is also a search feature that allows users to find whether their coworkers have bookings for that day and, if so, what workstation they are in. This could be useful in order to facilitate teams to stay closer (or further apart? 😉 ) to one another in the office space. The search allows for first or last names, case-insensitively.
+
+
 <br>
 <br>
 
